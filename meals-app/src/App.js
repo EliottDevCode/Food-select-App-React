@@ -1,21 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import * as React from "react";
+
+
+import Search from "./components/Search";
+import Meals from "./components/Meals";
+import Modal from "./components/Modal";
+import Favorites from './components/Favorites';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Meals App</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <main>
+       <Favorites/>
+       <Meals/>
+       <Modal/>
+       <Search/>
+   </main>
   );
 }
 
