@@ -2,12 +2,33 @@ import {useState} from "react";
 import {useGlobalContext} from "../context";
 
 const Search = () => {
-    return(
+    const [text, setText] = useState('');
+    const {setSearchTerm, fetchRandomMeal} = useGlobalContext();
+
+    const handleChange = (e) => {
+        setText(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if (text) {
+            setSearchTerm(text)
+        }
+    }
+
+    const handleRandomMeal = (e) => {
+        setSearchTerm('')
+        setText('')
+        fetchRandomMeal();
+    }
+
+    return (
         <header className="search-container">
-            <form>
-                <input type="text" placeholder="type favorite meal" className="form-input"/>
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="type favorite meal" onChange={handleChange} value={text}
+                       className="form-input"/>
                 <button type="submit" className="btn">search</button>
-                <button type="button" className="btn btn-hipster">surprise me!</button>
+                <button type="button" className="btn btn-hipster" onClick={handleRandomMeal}>surprise me!</button>
             </form>
         </header>
     )
